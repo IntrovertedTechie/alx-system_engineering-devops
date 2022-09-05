@@ -8,3 +8,4 @@ Redirect output of ls -la to file ls_cwd_content
 I dispaly the last line of the file, while also concatenating and appending it back to the original file via Piping
 Use the find command to find .js file in the present working directory and it's subfolder then deleting it
 I sort by time, newest first the pipe it to command head to get the first ten newest files
+find directories and sub-directories in the current directory including hidding files and piping them into word count to count them
