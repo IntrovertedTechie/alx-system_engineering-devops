@@ -1,3 +1,4 @@
+#!/bin/bash
 Print Hello World
 Display the content of a file
 Display the content of two files
