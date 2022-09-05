@@ -7,3 +7,4 @@ Piping the first three lines|into tail and displaying the last line which is the
 Redirect output of ls -la to file ls_cwd_content
 We dispaly the last line of the file, while also concatenating and appending it back to the original file via Piping
 Use the find command to find .js file in the present working directory and it's subfolder then deleting it
+I sort by time, newest first the pipe it to command head to get the first ten newest files
