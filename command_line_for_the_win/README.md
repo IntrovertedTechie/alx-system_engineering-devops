@@ -1,4 +1,7 @@
 # Command Challenge - Solutions
+The README shows the command challenge code while
+the pictures though alike shows the author have completed
+the challenge .
 ---
 [![](https://cmdchallenge.com/img/emojis/1F40C.png)]()
 #### Level 1 : print "hello world"
