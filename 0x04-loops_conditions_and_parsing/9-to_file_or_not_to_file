@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Gives you information about the holbertonschool file
+
+le_file="school"
+if [ -e "$le_file" ]; then
+    echo "school file exists"
+    if [ -s "$le_file" ]; then
+	echo "school file is not empty"
+    else
+	echo "school file is empty"
+    fi
+    if [ -f "$le_file" ]; then
+	echo "school is a regular file"
+    fi
+else
+    echo "school file does not exist"
+fi
