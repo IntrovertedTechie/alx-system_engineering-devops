@@ -1,11 +1,8 @@
-#!/bin/bash
-echo "I am alive!" >> /tmp/my_process
-while true; do
-  echo "I am alive!" >> /tmp/my_process
-  sleep 2
-  trap "echo I hate the kill command" 15
-  trap "echo Y U no love me?!" 2
-  trap 'rm /var/run/my_process.pid; exit' 15
-  trap 'rm /var/run/my_process.pid; exit' 3
-done
+#!/usr/bin/env bash
+# Manage my process
 
+while true
+do
+    echo "I am alive!" >> /tmp/my_process
+    sleep 2
+done
