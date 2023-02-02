@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# This script configures an Ubuntu server by mapping localhost to 127.0.0.2 and facebook.com to 8.8.8.8 in the /etc/hosts file
+# This script configures an Ubuntu server by mapping localhost to 127.0.0.2 and facebook.com to 8.8.8.8 in the /etc/hosts file 
 
 # Copy the /etc/hosts file to a new file
 cp /etc/hosts ~/hosts.new
