@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# This script configures an Ubuntu server by mapping localhost to 127.0.0.2 and facebook.com to 8.8.8.8 in the /etc/hosts file
+
+# Copy the /etc/hosts file to a new file
+cp /etc/hosts ~/hosts.new
+
+# Use sed to add the localhost and facebook.com mappings
+sed -i 's/^127.0.0.1.*$/127.0.0.2 localhost/' ~/hosts.new
+echo "8.8.8.8 facebook.com" >> ~/hosts.new
+
+# Overwrite the /etc/hosts file with the modified version
+cp -f ~/hosts.new /etc/hosts
+
+# Ensure that the script ends with a new line
+echo ""
+
