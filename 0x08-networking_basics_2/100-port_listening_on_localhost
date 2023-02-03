@@ -2,5 +2,5 @@
 
 # This script listens on port 98 on localhost
 
-nc -l 98
+sudo nc -l 98
 
