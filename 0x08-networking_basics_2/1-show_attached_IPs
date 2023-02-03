@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Getting ipv4 addresses
+
+ifconfig | grep -E "inet addr:" | cut -d':' -f2 | cut -d' ' -f1
+
