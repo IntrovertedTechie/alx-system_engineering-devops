@@ -1,2 +1,5 @@
-#!/bin/bash
-ssh -i ~/.ssh/school ubuntu@52.91.119.164
+#!/usr/bin/env bash
+
+# Logs into my remote server
+
+ssh ubuntu@52.91.119.164 -i ~/.ssh/school
