@@ -1,6 +1,5 @@
 
 
 #!/usr/bin/env bash
-# Logs into my remote server
 
 ssh ubuntu@34.202.233.61   
