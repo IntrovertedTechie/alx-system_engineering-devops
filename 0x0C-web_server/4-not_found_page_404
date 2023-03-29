@@ -1,8 +1,63 @@
 #!/usr/bin/env bash
-# install nginx
-sudo apt-get update
-sudo apt-get install -y nginx
+# Redirect an endpoint to another page
 
-sudo sh -c 'echo "<html><body><h1>Ceci n'"'"'est pas une page</h1></body></html>" > /usr/share/nginx/html/404.html'
-sudo sh -c 'echo "error_page 404 /404.html;" > /etc/nginx/conf.d/custom.conf'                                                                                                    sudo service nginx restart
-
+apt-get update
+apt-get -y install nginx
+new="server {
+        listen 80 default_server;
+        listen [::]:80 default_server ipv6only=on;
+        root /usr/share/nginx/html;
+        index index.html index.htm;
+        # Make site accessible from http://localhost/
+        server_name localhost;
+        location / {
+                # First attempt to serve request as file, then
+                # as directory, then fall back to displaying a 404.
+                # Uncomment to enable naxsi on this location
+                # include /etc/nginx/naxsi.rules
+        }
+        location /redirect_me {
+                return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+        }
+        error_page 404 /custom_404.html;
+        location /custom_404.html {
+                root /usr/share/nginx/html;
+                internal;
+        }
+        # Only for nginx-naxsi used with nginx-naxsi-ui : process denied reques$
+        #location /RequestDenied {
+        #       proxy_pass http://127.0.0.1:8080;
+        #}
+        #error_page 404 /404.html;
+        # redirect server error pages to the static page /50x.html
+        #
+        #error_page 500 502 503 504 /50x.html;
+        #location = /50x.html {
+        #       root /usr/share/nginx/html;
+        #}
+        # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+        #
+        #location ~ \.php$ {
+        #       fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        #       # NOTE: You should have 'cgi.fix_pathinfo = 0;' in php.ini
+        #
+        #       # With php5-cgi alone:
+        #       fastcgi_pass 127.0.0.1:9000;
+        #       # With php5-fpm:
+        #       fastcgi_pass unix:/var/run/php5-fpm.sock;
+        #       fastcgi_index index.php;
+        #       include fastcgi_params;
+        #}
+        # deny access to .htaccess files, if Apache's document root
+        # concurs with nginx's one
+        #
+        #location ~ /\.ht {
+        #       deny all;
+        #}
+}"
+cest="Ceci n'est pas une page"
+echo "Alx" > /usr/share/nginx/html/index.html
+echo "$new" > /etc/nginx/sites-available/default
+echo "$cest" > /usr/share/nginx/html/custom_404.html
+service nginx stop
+service nginx start
