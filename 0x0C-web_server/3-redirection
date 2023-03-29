@@ -1,21 +1,27 @@
 #!/usr/bin/env bash
-# Install Nginx
-sudo apt-get update
-sudo apt-get install -y nginx
+# Redirect an endpoint to another page
 
-sudo tee /etc/nginx/sites-available/talenthive.tech > /dev/null <<EOF
-server {
-    listen 80;
-    server_name talenthive.tech www.talenthive.tech;
-    return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
-}
-EOF
-
-sudo ln -s /etc/nginx/sites-available/talenthive.tech /etc/nginx/sites-enabled/
-
-sudo rm /etc/nginx/sites-enabled/default
-
-sudo nginx -t
-
-sudo systemctl restart nginx
+apt-get update
+apt-get -y install nginx
+new="server {
+        listen 80 default_server;
+        listen [::]:80 default_server ipv6only=on;
+        root /usr/share/nginx/html;
+        index index.html index.htm;
+        # Make site accessible from http://localhost/
+        server_name localhost;
+        location / {
+                # First attempt to serve request as file, then
+                # as directory, then fall back to displaying a 404.
+                try_files $uri $uri/ =404;
+                # Uncomment to enable naxsi on this location
+                # include /etc/nginx/naxsi.rules
+        }
+        location /redirect_me {
+                return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+        }
+}"
+echo "$new" > /etc/nginx/sites-available/default
+service nginx stop
+service nginx start
 
