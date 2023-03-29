@@ -1,12 +1,9 @@
 #!/usr/bin/env bash
-
 # Install Nginx
 apt-get update
 apt-get -y install nginx
 
-# Configure Nginx to return "Hello World!" at its root /
 echo "Hello World!" > /var/www/html/index.html
 
-# Restart Nginx (alternative to systemctl)
 /etc/init.d/nginx restart
 
