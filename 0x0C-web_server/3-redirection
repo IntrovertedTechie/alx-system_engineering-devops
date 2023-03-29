@@ -3,9 +3,19 @@
 sudo apt-get update
 sudo apt-get install -y nginx
 
-sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default.bak
+sudo tee /etc/nginx/sites-available/talenthive.tech > /dev/null <<EOF
+server {
+    listen 80;
+    server_name talenthive.tech www.talenthive.tech;
+    return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+}
+EOF
 
-sudo sed -i '/location \/ {/a \    return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;' /etc/nginx/sites-available/default
+sudo ln -s /etc/nginx/sites-available/talenthive.tech /etc/nginx/sites-enabled/
+
+sudo rm /etc/nginx/sites-enabled/default
+
+sudo nginx -t
 
 sudo systemctl restart nginx
 
