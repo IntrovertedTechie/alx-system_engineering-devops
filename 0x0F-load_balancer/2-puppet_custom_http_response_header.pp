@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 package { 'nginx':
   ensure => 'installed',
 }
