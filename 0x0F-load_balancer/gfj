@@ -1,0 +1,29 @@
+
+#!/usr/bin/env bash
+
+# Update the package list
+sudo apt-get update
+
+# Install HAproxy
+sudo apt-get -y install haproxy
+
+# Configure HAproxy to balance requests between web-01 and web-02
+sudo tee /etc/haproxy/haproxy.cfg <<EOF
+frontend myapp
+   bind *:80
+   mode http
+   default_backend app_servers
+
+backend app_servers
+   mode http
+   balance roundrobin
+   option httpchk HEAD / HTTP/1.1\r\nHost:localhost
+   server 141899-web-01  54.166.138.104:80 check
+   server 141899-web-02  100.25.198.209:80 check
+EOF
+
+# Enable HAproxy to be managed via an init script
+sudo sed -i "s/ENABLED=0/ENABLED=1/" /etc/default/haproxy
+
+# Restart the HAproxy service
+sudo service haproxy restart
