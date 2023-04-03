@@ -2,10 +2,9 @@ package { 'nginx':
   ensure => 'installed',
 }
 
-
 file_line { 'add_x_served_by_header':
   path   => '/etc/nginx/sites-available/default',
-  line   => "add_header X-Served-By ${facts['hostname']};\n",
+  line   => 'add_header X-Served-By ${facts[\'hostname\']};',
   match  => '^\\s*server\\s*\\{',
   after  => '^\\s*listen\\s*\\[\\:\\:\\]\\:80\\s*default_server\\s*\\;\\s*$',
   notify => Service['nginx'],
