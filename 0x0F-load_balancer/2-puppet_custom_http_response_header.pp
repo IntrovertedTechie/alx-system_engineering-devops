@@ -2,17 +2,6 @@ package { 'nginx':
   ensure => 'installed',
 }
 
-file { '/etc/nginx/sites-available/default':
-  content => "server {
-    listen 80 default_server;
-    listen [::]:80 default_server;
-    root /var/www/html;
-    index index.html;
-    server_name _;
-}
-
-",
-}
 
 file_line { 'add_x_served_by_header':
   path   => '/etc/nginx/sites-available/default',
