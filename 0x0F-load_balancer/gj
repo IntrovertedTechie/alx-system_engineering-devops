@@ -1,0 +1,8 @@
+# Install Nginx package
+package { 'nginx': ensure => 'installed',} 
+nginx::config::http { 'custom_header': header => [ "X-Served-By ${hostname}", ], }
+ # Enable Nginx site
+file { '/etc/nginx/sites-enabled/default': ensure => 'link', target => '/etc/nginx/sites-available/default',} 
+# Restart Nginx service
+service { 'nginx': ensure => 'running', enable => 'true', require => [Package['nginx'], File['/etc/nginx/sites-enabled/default']],}
+
