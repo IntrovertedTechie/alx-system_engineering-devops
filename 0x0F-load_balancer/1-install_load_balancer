@@ -18,7 +18,7 @@ frontend talenthive.tech
 backend talenthive-backend
     balance roundrobin
     option forwardfor
-    server 141899-web-01 54.166.138.104:80 check
+    server 141899-web-01 54.85.99.227:80 check
     server 141899-web-02 100.25.198.209:80 check
 " >> /etc/haproxy/haproxy.cfg
 
