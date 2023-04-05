@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+Hi#!/usr/bin/env bash
 # Install and configure HAproxy on your lb-01 server.
 # Requirements:
 # Configure HAproxy so that it send traffic to web-01 and web-02
@@ -17,7 +17,7 @@ frontend talenthive.tech
     default_backend talenthive-backend
 backend talenthive-backend
     balance roundrobin
-    option forwardfor
+    
     server 141899-web-01 54.85.99.227:80 check
     server 141899-web-02 100.25.198.209:80 check
 " >> /etc/haproxy/haproxy.cfg
