@@ -38,20 +38,30 @@ defaults
 	errorfile 503 /etc/haproxy/errors/503.http
 	errorfile 504 /etc/haproxy/errors/504.http
 
-frontend talenthive.tech
-    bind *:80
-    mode http
-    default_backend talenthive-backend
-backend talenthive-backend
-    balance roundrobin
-    option forwardfor
-    server 141899-web-01 54.166.138.104:80 check
-    server 141899-web-02 100.25.198.209:80 check
 
-frontend talenthive.tech
-    bind *:80
-    mode http
-    default_backend talenthive-backend
+
+    
+
+
+ 
+    
+
+
+
+
+frontend talenthive-frontend-http
+  bind *:80
+  mode http
+  http-request set-header X-Forwarded-Proto http
+  default_backend talenthive-backend
+
+frontend talenthive-frontend-https
+  bind *:443 ssl crt /etc/haproxy/certs/www.talenthive.tech.pem
+  http-request set-header X-Forwarded-Proto https
+  default_backend talenthive-backend
+
+
+
 backend talenthive-backend
     balance roundrobin
     option forwardfor
