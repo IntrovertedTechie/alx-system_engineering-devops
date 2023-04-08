@@ -34,21 +34,23 @@ defaults
 	errorfile 504 /etc/haproxy/errors/504.http
 
 
-frontend talenthive-frontend
-  bind *:80
-  bind *:443 ssl crt /etc/haproxy/certs/www.talenthive.tech.pem
-  redirect scheme https if !{ ssl_fc }
-  mode http
-  stats uri /haproxy?stats
-  default_backend servers
 
-backend servers
+
+frontend talenthive-frontend-http
+  bind *:80
+  mode http
+  http-request set-header X-Forwarded-Proto http
+  default_backend talenthive-backend
+
+frontend talenthive-frontend-https
+  bind *:443 ssl crt /etc/haproxy/certs/www.talenthive.tech.pem
+  http-request set-header X-Forwarded-Proto https
+  default_backend talenthive-backend
+
+backend talenthive-backend
   balance roundrobin
   server web-01 54.85.99.227:80 check
   server web-02 100.25.198.209:80 check
-
-
-
 
 
 
