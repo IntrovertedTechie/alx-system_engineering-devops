@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 # Update Nginx configuration to run as nginx user
-sed -i 's/user\s*nginx;/user nginx nginx;/g' /etc/nginx/nginx.conf
-service nginx start
-ps auxff | grep 'ngin[x]'
-nc -z 0 8080
-
-
+pkill -f apache2
+chmod 644 /etc/nginx/nginx.conf
+sed -i "1i user nginx;" /etc/nginx/nginx.conf
+sed -i 's/80/8080/' /etc/nginx/sites-enabled/default
+sudo -u nginx service nginx restart
