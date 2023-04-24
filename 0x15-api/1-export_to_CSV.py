@@ -21,7 +21,6 @@ if __name__ == '__main__':
             csv_file = "{}.csv".format(user_id)
             with open(csv_file, mode='w') as file:
                 writer = csv.writer(file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-                writer.writerow(['USER_ID', 'USERNAME', 'TASK_COMPLETED_STATUS', 'TASK_TITLE'])
                 for task in todo_data:
                     writer.writerow([user_id, user_data['username'], task['completed'], task['title']])
         except ValueError:
