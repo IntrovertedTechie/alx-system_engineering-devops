@@ -21,9 +21,10 @@ if __name__ == '__main__':
             csv_file = "{}.csv".format(user_id)
             with open(csv_file, mode='w') as file:
                 writer = csv.writer(file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-                for task in todo_data:
+               for task in todo_data:
                     writer.writerow([user_id, user_data['username'], task['completed'], task['title']])
         except ValueError:
             print("Error: Invalid JSON format")
     else:
-        print("Usage: ./1-export_to_CSV.py <employee_id>")  
+        print("Usage: ./1-export_to_CSV.py <employee_id>")
+
