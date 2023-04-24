@@ -1,11 +1,12 @@
 #!/usr/bin/python3
 """
-    Gather data from an API and export TODO list progress for a given employee ID in CSV format
+Gather data from an API and export TODO list progress for a given employee ID in CSV format
 """
 
 import requests
 import csv
 import sys
+
 
 if __name__ == '__main__':
     if len(sys.argv) == 2 and sys.argv[1].isdigit():
@@ -21,6 +22,7 @@ if __name__ == '__main__':
             csv_file = "{}.csv".format(user_id)
             with open(csv_file, mode='w') as file:
                 writer = csv.writer(file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+                writer.writerow(['user_id', 'username', 'task_completed_status', 'task_title'])
                 for task in todo_data:
                     writer.writerow([user_id, user_data['username'], task['completed'], task['title']])
         except ValueError:

@@ -3,8 +3,8 @@
     Gather data from an API and display TODO list progress for a given employee ID
 """
 
-import requests
 import sys
+import requests
 
 if __name__ == '__main__':
     if len(sys.argv) == 2 and sys.argv[1].isdigit():
