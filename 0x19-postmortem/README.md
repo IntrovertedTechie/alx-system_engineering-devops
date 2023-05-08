@@ -2,6 +2,9 @@ Postmortem: Outage in Web Application
 
  ![Alt Text](https://github.com/IntrovertedTechie/alx-system_engineering-devops/blob/master/0x19-postmortem/200%20(5).gif
 )
+
+
+
 Issue Summary:
 
 Duration of the outage: May 6, 2023, 12:00 PM - May 6, 2023, 2:30 PM (WAT) 
