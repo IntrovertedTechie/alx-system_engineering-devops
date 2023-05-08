@@ -1,6 +1,8 @@
 Postmortem: Outage in Web Application
 
-Issue Summary: Duration of the outage: May 6, 2023, 12:00 PM - May 6, 2023, 2:30 PM (UTC-5) Impact: The web application was down, and users were unable to access it. Approximately 80% of the users were affected.
+Issue Summary: Duration of the outage: May 6, 2023, 12:00 PM - May 6, 2023, 2:30 PM (UTC-5) 
+
+Impact: The web application was down, and users were unable to access it. Approximately 80% of the users were affected.
 
 Root Cause: The root cause of the outage was a database server issue. One of the database servers crashed, which caused the application to lose connectivity with the database. The application was configured to use the faulty server as the primary database, and it was unable to switch to the secondary database automatically.
 
