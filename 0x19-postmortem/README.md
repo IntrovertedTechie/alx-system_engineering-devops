@@ -1,6 +1,6 @@
 Postmortem: Outage in Web Application
 
- ![Alt Text](https://github.com/IntrovertedTechie/alx-system_engineering-devops/blob/master/0x19-postmortem/200%20(5).gif
+ ![Alt Text](https://github.com/IntrovertedTechie/alx-system_engineering-devops/blob/master/0x19-postmortem/200%20(3).gif
 )
 
 
