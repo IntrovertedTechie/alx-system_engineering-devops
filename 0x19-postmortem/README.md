@@ -31,12 +31,17 @@ Timeline:
 
 2:30 PM: The database server was back online, and the application was fully functional.
 
- ![Alt Text](https://github.com/IntrovertedTechie/alx-system_engineering-devops/blob/master/0x19-postmortem/200%20(2).gif
+https://github.com/IntrovertedTechie/alx-system_engineering-devops/blob/master/0x19-postmortem/200%20(2).gif
 )
 
 
 
 Misleading Investigation/Debugging Paths: The initial assumption that the issue was with the network caused a delay in identifying the root cause of the issue. The team should have investigated the database server first, as it was the most likely cause of the issue.
+
+
+ ![Alt Text](https://github.com/IntrovertedTechie/alx-system_engineering-devops/blob/master/0x19-postmortem/images%20(17).jpeg)
+
+
 
 Incident Escalation: The incident was escalated to the database administrators, who had more expertise in dealing with database server issues.
 
