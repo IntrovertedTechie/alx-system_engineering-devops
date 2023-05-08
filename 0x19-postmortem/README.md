@@ -2,7 +2,7 @@ Postmortem: Outage in Web Application
 
 Issue Summary:
 
-Duration of the outage: May 6, 2023, 12:00 PM - May 6, 2023, 2:30 PM (UTC-5) 
+Duration of the outage: May 6, 2023, 12:00 PM - May 6, 2023, 2:30 PM (WAT) 
 
 Impact: The web application was down, and users were unable to access it. Approximately 80% of the users were affected.
 
