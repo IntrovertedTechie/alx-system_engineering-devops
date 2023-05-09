@@ -2,9 +2,9 @@
 """
 This module contains a function that queries the Reddit API.
 """
-
-
 import requests
+
+
 
 
 def top_ten(subreddit):
