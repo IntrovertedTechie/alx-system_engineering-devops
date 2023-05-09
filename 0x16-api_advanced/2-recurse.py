@@ -1,16 +1,17 @@
 #!/usr/bin/python3
 """
-Queries the API and returns a list containing the titles of all hot articles.
+Queries the Reddit API and returns a list containing the titles of all hot articles for a given subreddit.
 """
 import requests
 
 
-def recurse(subreddit, hot_list=[], after=""):
-    """Returns a list containing the titles of all hot articles"""
-    url = "https://www.reddit.com/r/{}/hot.json?after={}".format(
-        subreddit, after)
+def recurse(subreddit, hot_list=[], after=None):
+    """Returns a list containing the titles of all hot articles for a given subreddit."""
+    url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
     headers = {'User-Agent': 'Mozilla/5.0'}
-    response = requests.get(url, headers=headers, allow_redirects=False)
+    params = {'after': after} if after else None
+    response = requests.get(url, headers=headers,
+                            params=params, allow_redirects=False)
     if response.status_code == 200:
         data = response.json().get('data')
         if data:
