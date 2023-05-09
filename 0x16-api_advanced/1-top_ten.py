@@ -1,28 +1,19 @@
 #!/usr/bin/python3
-"""
-Query API
-"""
+
+"""This module contains a function that queries the Reddit API and prints the titles of the first 10 hot posts for a given subreddit."""
+
 import requests
 
 
 def top_ten(subreddit):
-    """Print the titles of the first 10 hot.
-    """
-    url = f"https://www.reddit.com/r/{subreddit}/hot.json"
+    """Print the titles of the first 10 hot posts for a given subreddit."""
+    url = f"https://www.reddit.com/r/{subreddit}/hot.json?limit=10"
     headers = {'User-Agent': 'Mozilla/5.0'}
-    params = {'limit': 10}
-    response = requests.get(url, headers=headers, params=params)
-
+    response = requests.get(url, headers=headers)
     if response.status_code != 200:
-        print(None)
+        print("None")
         return
-
     data = response.json()
-    posts = data.get('data', {}).get('children', [])
-
-    if not posts:
-        print(None)
-        return
-
-    for post in posts[:10]:
+    for post in data['data']['children']:
         print(post['data']['title'])
+
