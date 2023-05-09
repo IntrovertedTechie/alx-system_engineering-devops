@@ -4,8 +4,6 @@ This module contains a function that queries the Reddit API.
 """
 import requests
 
-
-
 def top_ten(subreddit):
     """Print the titles of the first 10 hot posts for a given subreddit.
     """
@@ -18,4 +16,7 @@ def top_ten(subreddit):
     data = response.json()
     for post in data['data']['children']:
         print(post['data']['title'])
+
+
+
 
