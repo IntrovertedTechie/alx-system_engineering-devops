@@ -1,7 +1,8 @@
 #!/usr/bin/python3
-
-"""This module contains a function that queries the Reddit API.
 """
+This module contains a function that queries the Reddit API.
+"""
+
 
 import requests
 
