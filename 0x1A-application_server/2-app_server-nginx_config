@@ -1,0 +1,31 @@
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    server_name 34.224.1.169; 
+    add_header X-Served-By $hostname;
+
+    location /hbnb_static {
+        alias /data/web_static/current/;
+    }
+
+    location /airbnb-onepage/ {
+        proxy_pass http://127.0.0.1:5000/airbnb-onepage/;
+    }
+
+    root /var/www/html;
+    index index.html index.htm index.nginx-debian.html;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    location /redirect_me {
+        return 301 https://talenthive.tech;
+    }
+
+    error_page 404 /error_404.html;
+    location = /error_404.html {
+        internal;
+    }
+}
+
